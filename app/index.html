@@ -1,15 +1,43 @@
 <html>
 	<head>
+		<title>Dice-Down</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="description" content="">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+		
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic">
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0-rc3/angular-material.min.css">
-	</head>
-	<body>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="./style/dd.css"/>
+		
 		<!-- Angular Material Dependencies -->
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-animate.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-aria.min.js"></script>
-
-
-		<!-- Angular Material Javascript now available via Google CDN; version 0.11.2 used here -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-route.min.js"></script>
+		
 		<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0-rc3/angular-material.min.js"></script>
+		<script src="./src/ddApp.js"></script>
+		<style type="text/css">
+			/**
+			 * Hide when Angular is not yet loaded and initialized
+			 */
+			[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+			  display: none !important;
+			}
+		</style>
+	</head>
+	<body ng-app="ddApp">
+		<div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
+			
+			<md-toolbar  layout="row" class="md-whiteframe-z1">
+				<md-button class="menu" >
+					<md-icon  md-font-icon="fa-bars" class="fa s16"></md-icon>
+				</md-button>
+				<h1 class="md-headline">Dice-Down</h1>
+			</md-toolbar>
+		</div>
+		....
 	</body>
 </html>

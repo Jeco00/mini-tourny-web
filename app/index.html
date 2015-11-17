@@ -1,5 +1,6 @@
 <html>
 	<head>
+		<base href="/">
 		<title>Dice-Down</title>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,6 +20,11 @@
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0-rc3/angular-material.min.js"></script>
 		<script src="./src/ddApp.js"></script>
+		<script src="./src/navController.js"></script>
+		<script src="./src/homeCtl.js"></script>
+		<script src="./src/eventListCtl.js"></script>
+		
+		<script src="./src/eventCtl.js"></script>
 		<style type="text/css">
 			/**
 			 * Hide when Angular is not yet loaded and initialized
@@ -28,16 +34,30 @@
 			}
 		</style>
 	</head>
-	<body ng-app="ddApp">
+	<body layout="row" ng-app="ddApp" ng-controller="navCtl as nav">
+		<md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2" 
+			md-component-id="left" 
+			md-is-locked-open="$mdMedia('gt-sm')">
+			<md-toolbar  layout="column" class="md-whiteframe-z1">
+				<!--Primative menu, to be replaced later -->
+				<md-button href="#/welcome">Home</md-button>
+				<md-button href="#/myEvents">My Events</md-button>
+			</md-toolbar>
+		</md-sidenav>
 		<div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
 			
 			<md-toolbar  layout="row" class="md-whiteframe-z1">
-				<md-button class="menu" >
+				<md-button class="menu" hide-gt-sm ng-click="nav.toggleMenu()" aria-label="Show Menu">
 					<md-icon  md-font-icon="fa-bars" class="fa s16"></md-icon>
 				</md-button>
 				<h1 class="md-headline">Dice-Down</h1>
 			</md-toolbar>
+			<md-content layout="column" ng-cloak layout-fill ng-view>
+			
+			</md-content>
 		</div>
-		....
+		</div>
+		
+		
 	</body>
 </html>

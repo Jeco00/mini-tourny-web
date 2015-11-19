@@ -1,0 +1,41 @@
+
+html, body {
+  font-family: 'Roboto', sans-serif;
+  font-size:14px;
+  height:100%;
+  margin: 0px;
+  padding: 0px;
+}
+md-toolbar {
+	min-height: 56px;
+}
+md-toolbar h1 {
+  margin: auto;
+}
+.s64 {
+  font-size:64px;
+}
+
+.s32 {
+  font-size:48px;
+}
+
+.s16 {
+  font-size:24px;
+}
+
+
+md-icon.fa {
+  display:block;
+  padding-left:0px;
+  height: auto;
+  width: auto;
+}
+
+md-icon.s32 span {
+  padding-left:8px;
+}
+
+md-icon.s16 span {
+  padding-left:6px;
+}

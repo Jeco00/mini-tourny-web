@@ -1,6 +1,8 @@
 angular.module('ddApp')
-	.controller('EventListCtl', ['ddEvents'
+	.controller('EventListCtl', ['ddEvents',
 		function(ddEvents){
-			this.myEvents = ddEvents.getOwnedEvents();
+			ddEvents.getOwnedEvents(function(events){
+				this.myEvents = events;
+			});
 		}
 	]);

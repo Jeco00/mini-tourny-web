@@ -9,15 +9,18 @@ angular.module('ddApp', ['ngMaterial', 'ngRoute'])
 		$routeProvider
 			.when("/welcome", {
 				templateUrl: 'welcome.html',
-				controller: 'HomeCtl'
+				controller: 'HomeCtl',
+				controllerAs: "home"
 			})
 			.when("/myEvents",{
 				templateUrl: 'eventList.html',
-				controller: 'EventListCtl'
+				controller: 'EventListCtl',
+				controllerAs: 'ctl'
 			})
 			.when("/events/:eventId",{
 				templateUrl: 'eventMain.html',
-				controller: 'EventCtl'
+				controller: 'EventCtl',
+				controllerAs: "eventCtl"
 			});
 		
 		

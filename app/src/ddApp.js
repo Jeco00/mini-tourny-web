@@ -17,10 +17,13 @@ angular.module('ddApp', ['ngMaterial', 'ngRoute'])
 				controller: 'EventListCtl',
 				controllerAs: 'ctl'
 			})
-			.when("/events/:eventId",{
-				templateUrl: 'eventMain.html',
-				controller: 'EventCtl',
-				controllerAs: "eventCtl"
+			.when("/toEvents/:eventId",{
+				templateUrl: 'toMain.html',
+				controller: 'toCtl',
+				controllerAs: "ctl"
+			})
+			.when("/events/not_found",{
+				templateUrl: 'eventNotFound.html'
 			});
 		
 		

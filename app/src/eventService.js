@@ -1,6 +1,6 @@
 angular.module('ddApp')
-	.factory('ddEvents', ['$http', '$q',
-		function($http, $q){
+	.factory('ddEvents', ['$http', '$q', 'ddEventTypeCfg',
+		function($http, $q, ddEventTypeCfg){
 		
 			this.standings = [];
 			

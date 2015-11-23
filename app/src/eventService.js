@@ -17,23 +17,32 @@ angular.module('ddApp')
 				},
 				
 				reset: function() {
-					eventId = null;
-					//define container maps for enrolled players, and optional groups
-					players = Object.create(null);
-					teams = Object.create(null);
-					flights = Object.create(null);
-					standings = [];	
+					
 				},
 				  
-				createEvent: function(){
-					reset();
+				createEvent: function(eventDetails){
+					resetEvent();
+					return 1;
 				},
-				
+				loadEvent: function(eventId){
+					resetEvent();
+					var deferred = $q.defer();
+					deferred.resolve("loaded!");
+					return deferred;
+				},
 				getStandings: function(){
 					return standings;
 				}
 			};
 			
+			function resetEvent(){
+				eventId = null;
+				//define container maps for enrolled players, and optional groups
+				players = Object.create(null);
+				teams = Object.create(null);
+				flights = Object.create(null);
+				standings = [];	
+			}
 			event.reset();//Create empty containers
 			return event;
 		}]);

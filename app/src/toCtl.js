@@ -1,6 +1,6 @@
 angular.module('ddApp')
 	.controller('TOCtl', ['$routeParams', 'ddEvents', '$location', 'ddEventTypeCfg',
-		function($routeParams, ddEvents, location, ddEventTypeCfg){
+		function($routeParams, ddEvents, $location, ddEventTypeCfg){
 			
 			ctl = this;
 			
@@ -10,13 +10,11 @@ angular.module('ddApp')
 			ctl.eventDate = null;
 			ctl.system = "";
 			
+			console.log("event cont");
+			console.log("Event loaded");
+			//Load will pull remote data and return a promise to resolve after get
+			ddEvents.loadEvent($routeParams.eventId).then(populateEvent(), eventNotFound());
 			
-			if($routeParams.eventId == null){
-				ddEvents.newEvent();
-			} else {
-				//Load will pull remote data and return a promise to resolve after get
-				ddEvents.loadEvent($routeParams.eventId).then(populateEvent(), eventNotFound());
-			}
 			
 			function populateEvent(){
 				//populate the controller from the loaded event

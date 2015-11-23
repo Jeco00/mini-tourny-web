@@ -20,11 +20,13 @@
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0-rc3/angular-material.min.js"></script>
 		<script src="./src/ddApp.js"></script>
+		<script src="./src/ddConstants.js"></script>
 		<script src="./src/navController.js"></script>
 		<script src="./src/homeCtl.js"></script>
 		<script src="./src/eventListCtl.js"></script>
-		<script src="./src/eventService.js"></script>
+		<script src="./src/eventCreationCtl.js"></script>
 		<script src="./src/eventTypeCfg.js"></script>
+		<script src="./src/eventService.js"></script>
 		<script src="./src/toCtl.js"></script>
 		<style type="text/css">
 			/**
@@ -40,11 +42,15 @@
 			md-component-id="left" 
 			md-is-locked-open="$mdMedia('gt-sm')">
 			<md-toolbar  layout="column" class="md-whiteframe-z1">
-				<!--Primative menu, to be replaced later -->
-				<md-button href="#/welcome">Home</md-button>
-				<md-button href="#/myEvents">My Events</md-button>
-				<md-button href="#/to/">New Event</md-button>
+				
 			</md-toolbar>
+			<!--Primative menu, to be replaced later -->
+				<md-button href="#/welcome">Home</md-button>
+				<md-divider></md-divider>
+				<md-button href="#/myEvents">My Events</md-button>
+				<md-divider></md-divider>
+				<md-button href="#/newEvent/">New Event</md-button>
+				<md-divider></md-divider>
 		</md-sidenav>
 		<div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
 			
@@ -54,12 +60,12 @@
 				</md-button>
 				<h1 class="md-headline">Dice-Down</h1>
 			</md-toolbar>
-			<md-content layout="column" ng-cloak layout-fill ng-view>
+			<md-content layout="column" ng-cloak  ng-view>
 			
 			</md-content>
+			 
 		</div>
 		</div>
-		
-		
+	
 	</body>
 </html>

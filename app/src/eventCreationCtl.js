@@ -5,6 +5,7 @@ angular.module('ddApp')
 			ctl = this;
 			
 			ctl.eventDetails = {
+				id: null,
 				name: null,
 				desc: null,
 				eventDate: null,
@@ -21,13 +22,27 @@ angular.module('ddApp')
 			
 			
 			ctl.saveEvent = function(){
-				ddEvents.createEvent(ctl.eventDetails);
-				$location.path(ddConstants.MY_EVENTS_PATH);
+				ddEvents.createEvent(ctl.eventDetails).then(
+					function(id){
+						$location.path(ddConstants.MY_EVENTS_PATH);
+					}, 
+					function(){
+						console.error("Event Creation Failed");
+					}
+				);
+				
 			};
 			
 			ctl.startEvent = function(){
-				var id = ddEvents.createEvent(ctl.eventDetails);
-				$location.path(ddConstants.EVENT_PATH + id);
+				ddEvents.createEvent(ctl.eventDetails).then(
+					function(id){
+						$location.path(ddConstants.EVENT_PATH + id);
+					}, 
+					function(){
+						console.error("Event Creation Failed");
+					}
+				);
+				
 			};
 			
 			

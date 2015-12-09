@@ -1,6 +1,6 @@
 angular.module('ddApp')
-	.factory('ddEvents', ['$http', '$q', 'ddEventTypeCfg',
-		function($http, $q, ddEventTypeCfg){
+	.factory('ddEvents', ['$http', '$q', 'ddEventTypeCfg','ddConstants',
+		function($http, $q, ddEventTypeCfg, ddConstants){
 		
 			this.standings = [];
 			
@@ -11,9 +11,20 @@ angular.module('ddApp')
 				flights: Object.create(null),
 				
 				getOwnedEvents: function(){
-					var deferred = $q.defer();
-					deferred.resolve([]);
-					return deferred;
+					return $q(function(resolve, reject){
+						var eventsJson = localStorage.getItem(ddConstants.OWNED_EVENTS);
+						if(eventsJson != null){
+							try{
+								var events = angular.fromJson(eventsJson);
+								resolve(events);
+							} catch(err){
+								reject(err);
+							}
+							return;
+						} else {
+							resolve([]);
+						}
+					});
 				},
 				
 				reset: function() {
@@ -21,14 +32,28 @@ angular.module('ddApp')
 				},
 				  
 				createEvent: function(eventDetails){
-					resetEvent();
-					return 1;
+					return $q(function (resolve, reject){
+						//REST call to create event in back end
+						//Failing backend access save to local
+						event.getOwnedEvents().then(function(events){
+							//Events loaded
+							eventDetails.id = events.length+1;
+							events.push(eventDetails);
+							localStorage.setItem(ddConstants.OWNED_EVENTS, angular.toJson(events));
+							console.log("item set");
+							resolve(eventDetails.id);
+						}, function(err){
+							//loading error
+							console.error("Could not load current Events");
+							reject(0);
+						})
+					});
 				},
 				loadEvent: function(eventId){
 					resetEvent();
 					var deferred = $q.defer();
 					deferred.resolve("loaded!");
-					return deferred;
+					return deferred.promise;
 				},
 				getStandings: function(){
 					return standings;

@@ -13,14 +13,17 @@ angular.module('ddApp')
 			console.log("event cont");
 			console.log("Event loaded");
 			//Load will pull remote data and return a promise to resolve after get
-			ddEvents.loadEvent($routeParams.eventId).then(populateEvent(), eventNotFound());
+			ddEvents.loadEvent($routeParams.eventId).then(populateEvent, eventNotFound);
 			
 			
 			function populateEvent(){
+				
+				console.log("eventPopped");
 				//populate the controller from the loaded event
 			}
 			
 			function eventNotFound(){
+				console.log("badId");
 				//Route to nothing found page
 				$location.path("/events/not_found");
 			}
